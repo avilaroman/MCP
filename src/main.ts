@@ -8,25 +8,25 @@ import { KV_HANDLERS, KV_TOOLS } from './tools/kv'
 import { ANALYTICS_HANDLERS, ANALYTICS_TOOLS } from './tools/analytics'
 import { WORKER_TOOLS, WORKERS_HANDLERS } from './tools/workers'
 
-// Types for Cloudflare responses
+// Tipos de Respuestas en Cloudflare
 
-// Combine all tools
+// Combina todas las herramientas directamente,si lo quieres quieres o configura solo el servicio que vas a usar.
 
 const ALL_TOOLS = [...KV_TOOLS, ...WORKER_TOOLS, ...ANALYTICS_TOOLS, ...R2_TOOLS, ...D1_TOOLS]
 
-// Create server
+// Creando el server
 const server = new Server(
-  { name: 'cloudflare', version: '1.0.0' }, // Changed from cloudflare-kv to cloudflare
+  { name: 'cloudflare', version: '1.0.0' }, // Se cambió de cloudflare-kv a cloudflare
   { capabilities: { tools: {} } },
 )
 
-// Handle list tools request
+// Handle el list tools request
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   log('Received list tools request')
   return { tools: ALL_TOOLS }
 })
 
-// Handle tool calls
+// Handle tool Llamada:
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const toolName = request.params.name
   log('Received tool call:', toolName)
@@ -65,14 +65,14 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 })
 
-// Start server
+// Comienza el server
 export async function main() {
-  log('Starting server...')
+  log('Comenzando el server...')
   try {
     const transport = new StdioServerTransport()
     log('Created transport')
     await server.connect(transport)
-    log('Server connected and running')
+    log('Server connectado y Corriendo perfectamente')
   } catch (error) {
     log('Fatal error:', error)
     process.exit(1)
