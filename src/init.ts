@@ -26,22 +26,21 @@ const execAsync = promisify(exec)
 export async function init(accountTag: string | undefined) {
   logRaw(
     createDialog([
-      `👋 Welcome to ${chalk.yellow('mcp-server-cloudflare')} v${mcpCloudflareVersion}!`,
-      `💁‍♀️ This ${chalk.green("'init'")} process will ensure you're connected to the Cloudflare API`,
-      `   and install the Cloudflare MCP Server into Claude Desktop (${chalk.blue.underline('https://claude.ai/download')})`,
-      `ℹ️ For more information, visit ${chalk.blue.underline('https://github.com/cloudflare/mcp-server-cloudflare')}`,
-      `🧡 Let's get started.`,
+      `👋 Bievenidos al ${chalk.yellow('mcp-server-cloudflare')} v${mcpCloudflareVersion}!`,
+      `💁‍♀️ Este ${chalk.green("'init'")} proyecto ejemplo base para lanzar cualquiera en produccion usando todas las caracteristicas de Cloudflare API Cloudflare MCP Server Usando Claude Desktop (${chalk.blue.underline('https://claude.ai/download')})`,
+      `ℹ️ Para mas información, visita ${chalk.blue.underline('https://github.com/cloudflare/mcp-server-cloudflare')}`,
+      `🧡 1, 2, 3 Comenzemos! `,
     ]),
   )
 
-  startSection(`Checking for existing Wrangler auth info`, `Step 1 of 3`)
-  updateStatus(chalk.gray(`If anything goes wrong, try running 'npx wrangler@latest login' manually and retrying.`))
+  startSection(`Checkenando si esta configurado el Wrangler auth info`, `Paso 1 de 3`)
+  updateStatus(chalk.gray(`Si cualquier cosa sale mal, preba con: 'npx wrangler@latest login' y prueba nuevamente pero Manual.`))
 
   try {
     getAuthTokens()
   } catch (e: any) {
     updateStatus(`${chalk.underline.red('Warning:')} ${chalk.gray(e.message)}`, false)
-    updateStatus(`Running '${chalk.yellow('npx wrangler login')}' and retrying...`, false)
+    updateStatus(`Corriendo '${chalk.yellow('npx wrangler login')}' y re-intentando...`, false)
 
     const { stderr, stdout } = await execAsync('npx wrangler@latest login')
     if (stderr) updateStatus(chalk.gray(stderr))
