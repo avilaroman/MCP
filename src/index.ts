@@ -17,17 +17,17 @@ const [cmd, ...args] = process.argv.slice(2)
 if (cmd === 'init') {
   const [accountId, ...rest] = args
   if (rest.length > 0) {
-    throw new Error(`Usage: npx @cloudflare/mcp-server-cloudflare init [account_id]`)
+    throw new Error(`Uso: npx @cloudflare/mcp-server-cloudflare init [account_id]`)
   }
 
   init(accountId)
 } else if (cmd === 'run') {
   const [accountId, ...rest] = args
   if (!accountId && !config.accountId) {
-    throw new Error(`Missing account ID. Usage: npx @cloudflare/mcp-server-cloudflare run [account_id]`)
+    throw new Error(`Falta el account ID. Usage: npx @cloudflare/mcp-server-cloudflare run [account_id]`)
   }
   if (rest.length > 0) {
-    throw new Error(`Too many arguments. Usage: npx @cloudflare/mcp-server-cloudflare run [account_id]`)
+    throw new Error(`Muchos Argumentos. Usa así en la consola: npx @cloudflare/mcp-server-cloudflare run [account_id]`)
   }
   config.accountId = accountId
 
@@ -36,9 +36,9 @@ if (cmd === 'init') {
 
     if (isAccessTokenExpired()) {
       if (await refreshToken()) {
-        console.log('Successfully refreshed access token')
+        console.log('Satisfactoriamente Accedió! con el Token')
       } else {
-        console.log('Failed to refresh access token')
+        console.log('Fallo con el Token')
       }
     }
     config.apiToken = LocalState.accessToken?.value
@@ -52,7 +52,7 @@ if (cmd === 'init') {
     }),
   )
 
-  // Start the server
+  // Comienza el Servidor
   main()
 } else {
   throw new Error(`Unknown command: ${cmd}. Expected 'init' or 'run'.`)
