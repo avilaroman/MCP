@@ -1,4 +1,4 @@
-# Servidor MCP de Cloudflare
+# Servidor MCP de Cloudflare Model Context Protocol
 
 El Protocolo de contexto de modelo (MCP) es un [nuevo protocolo estandarizado](https://modelcontextprotocol.io/introduction) para gestionar el contexto entre modelos de lenguaje grandes (LLM) y sistemas externos. En este repositorio, proporcionamos un instalador y un servidor MCP para la [API de Cloudflare](https://api.cloudflare.com).
 
