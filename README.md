@@ -19,6 +19,7 @@ Esto le permite usar Claude Desktop, o cualquier cliente MCP, para usar lenguaje
 ## Configuración
 
 1. Ejecuta `npx @cloudflare/mcp-server-cloudflare init`
+2. o clona localmente tu repo: "git clone https://github.com/avilaroman/MCP.git"
 
 <div align="left">
 <img src="https://github.com/user-attachments/assets/163bed75-ec0c-478a-94b2-179969a90923" alt="Ejemplo de salida de consola" width="300"/>
@@ -68,7 +69,13 @@ Esto le permite usar Claude Desktop, o cualquier cliente MCP, para usar lenguaje
 
 ## Desarrollo
 
-En la carpeta del proyecto actual, ejecute:
+En la carpeta del proyecto actual,
+```
+git clone https://github.com/avilaroman/MCP.git
+cd MCP
+```
+luego
+ejecute:
 
 ```
 pnpm install
